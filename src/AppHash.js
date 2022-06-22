@@ -7,10 +7,10 @@ import { Container } from 'react-bootstrap';
 
 function Out({ page }) {
   switch (page) {
-    case '/page1':
-    case '/':  
+    case '#page1':
+    case '#':  
       return <Page1 />;
-    case '/page2':
+    case '#page2':
       return <Page2 />;
     default:
       return "404 error";  
@@ -18,15 +18,12 @@ function Out({ page }) {
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const [currentPage, setCurrentPage] = useState(window.location.hash);
 
   useEffect(() => {
-    window.navigation.addEventListener('navigate', (evt) => {
-      if (!evt.canTransition) return; //is it a local page that we can intercept?
-      evt.transitionWhile(
-        setCurrentPage(new URL(evt.destination.url).pathname)
-      );
-      //In the future, the standard will be canIntercept and intercept()
+    window.addEventListener('hashchange', (evt) => {
+      evt.preventDefault();
+      setCurrentPage(window.location.hash);
     });
   }, []);
 
