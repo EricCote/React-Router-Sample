@@ -4,7 +4,7 @@ import './custom.scss';
 import App from './AppCompteur';
 //import reportWebVitals from './reportWebVitals';
 
-document.documentElement.setAttribute('data-bs-theme', 'dark');
+//document.documentElement.setAttribute('data-bs-theme', 'dark');
 
 const root = createRoot(document.getElementById('root'));
 root.render(
