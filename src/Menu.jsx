@@ -3,9 +3,9 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export default function Menu() {
   return (
-    <Navbar bg='light' variant='light' expand='lg' >
+    <Navbar variant='dark' bg='dark' expand='lg' className='mb-4'>
       <Container>
-        <Navbar.Brand href='/'>React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href='/'>React Academy</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
