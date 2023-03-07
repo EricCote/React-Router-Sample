@@ -5,6 +5,7 @@ export default function Boite({ nombre, onChange }) {
   return (
     <Form.Control
       value={nombre}
+      type='number'
       onChange={(evt) => {
         onChange(evt.target.value);
       }}

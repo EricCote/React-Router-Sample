@@ -23,7 +23,6 @@ function App() {
         ) {
           evt.preventDefault(); //annule la navigation
           window.history.pushState(url.pathname, '', url.pathname); //on ajoute la destination dans l'historique
-          console.log(url.pathname);
           setCurrentPage(url.pathname); //on change l'état pour afficher la bonne page
         }
       });
