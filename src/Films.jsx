@@ -14,7 +14,7 @@ export default function Films() {
       'https://mcuapi.herokuapp.com/api/v1/movies?page=1&limit=50'
     );
     const data = await response.json();
-    setFilms(data);
+    setFilms(data.data);
   }
 
   useEffect(() => {
@@ -34,8 +34,8 @@ export default function Films() {
         <tbody>
           {films.map((film) => (
             <tr key={film.id}>
-              <td>{film.name}</td>
-              <td>{film.releaseDate}</td>
+              <td>{film.title}</td>
+              <td>{film.release_date}</td>
             </tr>
           ))}
         </tbody>
