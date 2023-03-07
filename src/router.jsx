@@ -3,6 +3,7 @@ import Compteur from './compteur/Compteur';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Root from './Root';
+import Films from './Films';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/compteur',
         element: <Compteur />,
+      },
+      {
+        path: '/films',
+        element: <Films />,
       },
       {
         element: <div>Erreur 404</div>,
