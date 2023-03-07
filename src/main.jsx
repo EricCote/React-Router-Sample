@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './custom.scss';
-import App from './AppReactRouter';
+import App from './react-router/App';
 //import reportWebVitals from './reportWebVitals';
 
 //document.documentElement.setAttribute('data-bs-theme', 'dark');

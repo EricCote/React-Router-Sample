@@ -4,7 +4,7 @@ import Menu from './Menu';
 import Route from './Route';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('/');
+  const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
   useEffect(() => {
     //on gère le bouton Back!

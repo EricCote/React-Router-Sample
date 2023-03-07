@@ -1,5 +1,5 @@
-import Page1 from './Page1';
-import Page2 from './Page2';
+import Page1 from '../page1';
+import Page2 from '../page2';
 
 export default function Route({ page }) {
   //Si nous sommes en mode hash

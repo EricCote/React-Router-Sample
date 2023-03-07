@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import Compteur from './compteur/Compteur';
+import Compteur from '../compteur/Compteur';
 
 function App() {
   return (
