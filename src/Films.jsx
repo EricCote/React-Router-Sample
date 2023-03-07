@@ -25,7 +25,12 @@ export default function Films() {
     <>
       <h1>Films Marvel</h1>
       <Table striped bordered hovered>
-        <thead></thead>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Date</th>
+          </tr>
+        </thead>
         <tbody>
           {films.map((film) => (
             <tr key={film.id}>
