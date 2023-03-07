@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
 // on pourrait utiliser:
 // XHR (XmlHttpRequest)
 // jQuery (ajax)
@@ -23,6 +24,17 @@ export default function Films() {
   return (
     <>
       <h1>Films Marvel</h1>
+      <Table striped bordered hovered>
+        <thead></thead>
+        <tbody>
+          {films.map((film) => (
+            <tr key={film.id}>
+              <td>{film.name}</td>
+              <td>{film.releaseDate}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </>
   );
 }
