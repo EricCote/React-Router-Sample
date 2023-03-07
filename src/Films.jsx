@@ -24,7 +24,7 @@ export default function Films() {
   return (
     <>
       <h1>Films Marvel</h1>
-      <Table striped bordered hovered>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Nom</th>
