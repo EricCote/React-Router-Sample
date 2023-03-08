@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 
 export default function Menu() {
   let location = useLocation();
@@ -13,16 +13,16 @@ export default function Menu() {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav activeKey={location.pathname} className='me-auto'>
-            <Nav.Link as={Link} eventKey='/page1' to='/page1'>
+            <Nav.Link as={NavLink} to='/page1'>
               Page 1
             </Nav.Link>
-            <Nav.Link as={Link} eventKey='/page2' to='/page2'>
+            <Nav.Link as={NavLink} to='/page2'>
               Page 2
             </Nav.Link>
-            <Nav.Link as={Link} eventKey='/compteur' to='/compteur'>
+            <Nav.Link as={NavLink} to='/compteur'>
               Compteur
             </Nav.Link>
-            <Nav.Link as={Link} eventKey='/films' to='/films'>
+            <Nav.Link as={NavLink} to='/films'>
               Films Marvel
             </Nav.Link>
           </Nav>
