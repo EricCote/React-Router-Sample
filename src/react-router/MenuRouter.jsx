@@ -25,6 +25,12 @@ export default function Menu() {
             <Nav.Link as={NavLink} to='/films'>
               Films Marvel
             </Nav.Link>
+            <Nav.Link as={NavLink} to='/thrones'>
+              GOT
+            </Nav.Link>
+            <Nav.Link as={NavLink} to='/contacts'>
+              Contacts
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

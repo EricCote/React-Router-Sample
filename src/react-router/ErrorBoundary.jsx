@@ -4,7 +4,7 @@ import Menu from './MenuRouter';
 
 export default function ErrorBoundary() {
   let error = useRouteError();
-  console.log(error);
+  console.error(error);
   return (
     <>
       <Menu />
