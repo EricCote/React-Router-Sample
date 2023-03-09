@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import FilmCard from './FilmCard';
 import FilmTable from './FilmTable';
-// on pourrait utiliser:
-// XHR (XmlHttpRequest)
-// jQuery (ajax)
-// axios
-// fetch (html5)
+import FilterBox from './FilterBox';
 
 export default function Films() {
   const [films, setFilms] = useState([]);
+  const [filter, setFilter] = useState('');
 
   async function chargerFilms() {
     const response = await fetch(
@@ -22,13 +19,24 @@ export default function Films() {
     chargerFilms();
   }, []);
 
+  const filteredFilms = films.filter((film) =>
+    film.title.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <>
       <h1>Films Marvel</h1>
 
-      <FilmTable films={films} />
+      <FilterBox
+        value={filter}
+        onChange={(filter) => {
+          setFilter(filter);
+        }}
+      />
 
-      {films.map((film) => (
+      <FilmTable films={filteredFilms} />
+
+      {filteredFilms.map((film) => (
         <FilmCard film={film} key={film.id}></FilmCard>
       ))}
     </>
