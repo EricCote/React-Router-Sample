@@ -1,4 +1,4 @@
-import { createBrowserRouter, defer } from 'react-router-dom';
+import { createBrowserRouter, defer, redirect } from 'react-router-dom';
 import Compteur from '../compteur/Compteur';
 import Page1 from '../page1';
 import Page2 from '../page2';
@@ -6,8 +6,9 @@ import Films from '../films/indexWithRouteLoaderSpinner';
 import Thrones from '../thrones';
 import Root from './Root';
 import ErrorBoundary from './ErrorBoundary';
-import ContactApi from '../contacts/contactsapi';
-import Contacts from '../contacts';
+import ContactApi from '../contacts2/ContactsApi';
+import Contacts from '../contacts2';
+import Details from '../contacts2/Details';
 
 const router = createBrowserRouter([
   {
@@ -47,11 +48,52 @@ const router = createBrowserRouter([
         element: <Contacts />,
         loader: ContactApi.getAllContacts,
       },
+      {
+        path: '/contacts/details/:id',
+        element: <Details />,
+        loader: async ({ params }) => {
+          let data = await ContactApi.getContact(params.id);
+          data.formErrors = {};
+          return data;
+        },
+        action: actionContact,
+      },
+      {
+        path: '/contacts/details/create',
+        element: <Details />,
+        loader: () => {
+          let data = {
+            id: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            formErrors: {},
+          };
+          return data;
+        },
+        action: actionContact,
+      },
     ],
   },
 ]);
 
 export default router;
+
+async function actionContact({ request, params }) {
+  const formData = await request.formData();
+  if (request.method === 'DELETE') {
+    await ContactApi.deleteContact(params.id);
+  } else {
+    const contact = Object.fromEntries(formData);
+    await ContactApi.saveContact({
+      id: contact.id !== '0' ? contact.id : undefined,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      email: contact.email,
+    });
+  }
+  return redirect('/contacts');
+}
 
 async function loaderSimpleThrones({ request }) {
   return fetch('https://thronesapi.com/api/v2/Characters');

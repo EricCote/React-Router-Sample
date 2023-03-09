@@ -1,5 +1,5 @@
 import { Button, Table } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 export default function Contacts() {
   const contacts = useLoaderData();
@@ -21,9 +21,12 @@ export default function Contacts() {
               <td>{contact.firstName}</td>
               <td>{contact.lastName}</td>
               <td>
-                <Button variant='primary' className='me-3'>
+                <Link
+                  className='btn btn-primary me-3'
+                  to={`/contacts/details/${contact.id}`}
+                >
                   📄
-                </Button>
+                </Link>
                 <Button variant='danger'>✏</Button>
               </td>
             </tr>
