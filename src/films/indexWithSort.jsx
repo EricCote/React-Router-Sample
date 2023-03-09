@@ -13,17 +13,13 @@ export default function Films() {
   const [sortedBy, setSort] = useState({ column: null, isDescending: false });
   const [filter, setFilter] = useState('');
 
+  let filteredFilms;
+
   function sort(column) {
     const newSort = { column, isDescending: false }; //Si on trie une nouvelle colonne, c'est ascendant.
     if (sortedBy.column === newSort.column)
       newSort.isDescending = !sortedBy.isDescending; //Si on trie un colonne existante, c'est descendant
-    const sortedFilms = [...films]; //on clone les films
-    sortedFilms.sort((a, b) => {
-      return a[column].localeCompare(b[column]); //on trie d'après la colonne
-    });
-    if (newSort.isDescending) sortedFilms.reverse(); // on gère le tri descendant.
     setSort(newSort);
-    setFilms(sortedFilms);
   }
 
   async function chargerFilms() {
@@ -39,9 +35,16 @@ export default function Films() {
     chargerFilms();
   }, []);
 
-  const filteredFilms = films.filter((film) =>
+  filteredFilms = films.filter((film) =>
     film.title.toLowerCase().includes(filter.toLowerCase())
   );
+
+  if (sortedBy.column) {
+    filteredFilms.sort((a, b) => {
+      return a[sortedBy.column].localeCompare(b[sortedBy.column]); //on trie d'après la colonne
+    });
+    if (sortedBy.isDescending) filteredFilms.reverse(); // on gère le tri descendant.
+  }
 
   return (
     <>

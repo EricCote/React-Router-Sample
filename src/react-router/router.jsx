@@ -2,7 +2,7 @@ import { createBrowserRouter, defer } from 'react-router-dom';
 import Compteur from '../compteur/Compteur';
 import Page1 from '../page1';
 import Page2 from '../page2';
-import Films from '../films/indexBasic';
+import Films from '../films/indexWithSort';
 import Root from './Root';
 import ErrorBoundary from './ErrorBoundary';
 
