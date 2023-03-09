@@ -6,9 +6,9 @@ import Films from '../films/indexWithRouteLoaderSpinner';
 import Thrones from '../thrones';
 import Root from './Root';
 import ErrorBoundary from './ErrorBoundary';
-import ContactApi from '../contacts2/ContactsApi';
-import Contacts from '../contacts2';
-import Details from '../contacts2/Details';
+import ContactApi from '../contacts/ContactsApi';
+import Contacts from '../contacts';
+import Details from '../contacts/Details';
 
 const router = createBrowserRouter([
   {
