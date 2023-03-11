@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import FilmCard from './FilmCard';
-import FilmTable from './FilmTable';
-import FilterBox from './FilterBox';
+import FilmCards from '../films-common/FilmCards';
+import FilmTable from '../films-common/FilmTable';
+import FilterBox from '../films-common/FilterBox';
 
 export default function Films() {
   const [films, setFilms] = useState([]);
@@ -36,9 +36,7 @@ export default function Films() {
 
       <FilmTable films={filteredFilms} />
 
-      {filteredFilms.map((film) => (
-        <FilmCard film={film} key={film.id}></FilmCard>
-      ))}
+      <FilmCards films={filteredFilms} />
     </>
   );
 }

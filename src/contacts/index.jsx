@@ -18,8 +18,8 @@ export default function Contacts() {
         <tbody>
           {contacts.map((contact) => (
             <tr key={contact.id}>
-              <td>{contact.firstName}</td>
-              <td>{contact.lastName}</td>
+              <td className='align-middle'>{contact.firstName}</td>
+              <td className='align-middle'>{contact.lastName}</td>
               <td>
                 <Link
                   className='btn btn-primary me-3'

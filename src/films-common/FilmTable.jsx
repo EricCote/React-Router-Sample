@@ -1,6 +1,6 @@
 import { Button, Table } from 'react-bootstrap';
 
-function FilmTable({ films, sortedBy, sort }) {
+function FilmTable({ films, sortedBy, onSort }) {
   return (
     <Table striped bordered hover>
       <thead>
@@ -9,13 +9,13 @@ function FilmTable({ films, sortedBy, sort }) {
             columnName='title'
             display='Nom'
             sortedBy={sortedBy}
-            sort={sort}
+            onSort={onSort}
           />
           <Header
             columnName='release_date'
             display='Date Sortie'
             sortedBy={sortedBy}
-            sort={sort}
+            onSort={onSort}
           />
         </tr>
       </thead>
@@ -35,22 +35,18 @@ function FilmTable({ films, sortedBy, sort }) {
 
 export default FilmTable;
 
-function Header({ columnName, display, sortedBy, sort }) {
+function Header({ columnName, display, sortedBy, onSort }) {
   return sortedBy ? (
     <th>
       <Button
         variant='link'
         className='p-0 fw-bold'
         onClick={() => {
-          sort(columnName);
+          onSort(columnName);
         }}
       >
         {display}{' '}
-        {sortedBy.column === columnName
-          ? sortedBy.isDescending
-            ? '⬆'
-            : '⬇'
-          : '↕'}
+        {sortedBy.sortCol === columnName ? (sortedBy.desc ? '⬆' : '⬇') : '↕'}
       </Button>
     </th>
   ) : (
