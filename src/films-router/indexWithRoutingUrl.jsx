@@ -9,7 +9,7 @@ export default function FilmsRoutingUrl() {
   let [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries(searchParams);
   //{q: str, sortCol: column, desc: bool}
-  const { filter = '', sortCol, desc } = params;
+  const { q = '', sortCol, desc } = params;
 
   let filteredFilms;
 
@@ -33,7 +33,7 @@ export default function FilmsRoutingUrl() {
   }
 
   filteredFilms = films?.filter((film) =>
-    film.title.toLowerCase().includes(filter.toLowerCase())
+    film.title.toLowerCase().includes(q.toLowerCase())
   );
 
   if (sortCol) {
@@ -48,9 +48,9 @@ export default function FilmsRoutingUrl() {
       <h1>Films Marvel Routage Sans State juste Routage</h1>
 
       <FilterBox
-        value={filter}
-        onChange={(text) => {
-          handleFilter(text);
+        value={q}
+        onSubmit={(text) => {
+          updateSearch({ q: text });
         }}
       />
 
