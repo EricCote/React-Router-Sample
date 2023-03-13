@@ -16,6 +16,7 @@ import Details from '../contacts/Details';
 import FilmsReact from '../films-react';
 import FilmsDefer, { loaderDefer } from '../films-router/indexWithDefer';
 import FilmsSimple from '../films-react/indexSimple';
+import FilmsRoutingUrl from '../films-router/indexWithRoutingUrl';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
       {
         path: '/marvel/router',
         element: <FilmsRouter />,
+        loader: loaderWithErrorHandling,
+      },
+      {
+        path: '/marvel/url',
+        element: <FilmsRoutingUrl />,
         loader: loaderWithErrorHandling,
       },
       {

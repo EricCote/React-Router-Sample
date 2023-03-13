@@ -34,7 +34,7 @@ function FilmCard({ film }) {
               <Card.Title
                 as='h4'
                 className='overflow-y-auto'
-                style={{ maxHeight: '2.0em' }}
+                style={{ maxHeight: '2.5em' }}
               >
                 {film.title}
               </Card.Title>
@@ -42,7 +42,7 @@ function FilmCard({ film }) {
                 <b>Released on:</b> {film.release_date} <br />
                 <b>Duration:</b> {film.duration} minutes
               </Card.Text>
-              <Card.Text className='overflow-y-scroll' style={{ height: 120 }}>
+              <Card.Text className='overflow-y-scroll' style={{ height: 80 }}>
                 {film.overview}
               </Card.Text>
               <Card.Text className='pb-0'>
