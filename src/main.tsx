@@ -7,7 +7,6 @@ import './custom.scss';
 //import App from './my-routing/AppHash';
 //import App from './my-routing/AppHistory';
 //import App from './my-routing/AppNavigate';
-
 import App from './react-router/App';
 
 document.documentElement.setAttribute('data-bs-theme', 'dark');
