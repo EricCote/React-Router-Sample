@@ -7,14 +7,14 @@ function App() {
   const [currentPage, setCurrentPage] = useState(window.location.hash);
 
   useEffect(() => {
-    //On gère la navigation hashchange
+    //Handle the "hashchange" event
     window.addEventListener('hashchange', (evt) => {
       setCurrentPage(window.location.hash);
     });
   }, []);
 
   useEffect(() => {
-    //On change les liens vers des Hash
+    //change existing links to hashes
     changeAllLinksToHashes();
   }, [currentPage]);
 
@@ -31,16 +31,16 @@ function App() {
 export default App;
 
 function changeAllLinksToHashes() {
-  // On boucle à travers tous les liens
+  // go through all links
   for (const link of document.querySelectorAll(
     ':link'
   ) as NodeListOf<HTMLLinkElement>) {
-    //pour chaque lien, on créé un objet URL
+    //create a new link from the existing one
     const url = new URL(link.href);
-    //on valide si on reste sur même domaine
+    //is the destination on the same hostname?
     if (url.hostname === window.location.hostname) {
-      //On remplace le premier '/' par '#'
-      //Workaround pour strictMode: on ajoute le hash quand on est appelé une 2e fois de suite
+      //replace the first '/' with '#'
+      //Workaround for strictMode: Corrctly add the hash when called a second time.
       link.href = '#' + url.pathname.slice(1) + url.hash.slice(1);
     }
   }

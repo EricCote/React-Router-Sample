@@ -6,7 +6,7 @@ import FilmTable from '../common/FilmTable';
 export default function FilmsSimple() {
   const [films, setFilms] = useState<Film[]>([]);
 
-  async function fetchFilms() {
+  async function fetchMovies() {
     const response = await fetch(
       'https://mcuapi.herokuapp.com/api/v1/movies?limit=50'
     );
@@ -15,7 +15,7 @@ export default function FilmsSimple() {
   }
 
   useEffect(() => {
-    fetchFilms();
+    fetchMovies();
   }, []);
 
   return (

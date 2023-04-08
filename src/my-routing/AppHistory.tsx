@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Menu from './Menu';
 import Route from './Route';
@@ -7,29 +7,40 @@ function App() {
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
   useEffect(() => {
-    //on gère le bouton Back!
+    //handle the Back button!
     window.addEventListener('popstate', (evt) => {
-      setCurrentPage(evt.state); //On change l'état pour afficher la bonne page
+      setCurrentPage(evt.state); //change state to re-render the right page
     });
+  }, []); //bind this event on the first render.
 
-    //On gère les liens existants, de telle façon que quand on clique, on roule notre code de History API
+  //Modify existing links, instead of using a <Link to="/dest" /> component
+  useEffect(modifyLinksToAddClickHandler, []);
+
+  function modifyLinksToAddClickHandler() {
+    // Select all huperlinks
     for (const link of document.querySelectorAll(
       ':link'
     ) as NodeListOf<HTMLLinkElement>) {
       link.addEventListener('click', (evt) => {
-        const url = new URL(link.href);
-        if (
-          //on compare si la destination est différente, mais sur le même domaine, que la page courante
-          url.hostname === window.location.hostname &&
-          url.pathname !== window.location.pathname
-        ) {
-          evt.preventDefault(); //annule la navigation
-          window.history.pushState(url.pathname, '', url.pathname); //on ajoute la destination dans l'historique
-          setCurrentPage(url.pathname); //on change l'état pour afficher la bonne page
-        }
+        clickHandler(evt, link); //modify the click event with a special click handler
       });
     }
-  }, []);
+  }
+
+  function clickHandler(evt: Event, link: HTMLLinkElement) {
+    //create a url object from the link text
+    const url = new URL(link.href);
+    if (
+      //if hostname is the same, but with a different path,
+      //then handle the navigation
+      url.hostname === window.location.hostname &&
+      url.pathname !== window.location.pathname
+    ) {
+      evt.preventDefault(); //cancel the navigation
+      window.history.pushState(url.pathname, '', url.pathname); //Add destination in history
+      setCurrentPage(url.pathname); //set State to re-render the app.
+    }
+  }
 
   return (
     <>

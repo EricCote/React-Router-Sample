@@ -8,7 +8,7 @@ export default function FilmsSimple() {
   const [films, setFilms] = useState<Film[]>([]);
   // const [filter, setFilter] = useState<string>('');
 
-  async function fetchFilms() {
+  async function fetchMovies() {
     const response = await fetch(
       'https://mcuapi.herokuapp.com/api/v1/movies?limit=50'
     );
@@ -17,7 +17,7 @@ export default function FilmsSimple() {
   }
 
   useEffect(() => {
-    fetchFilms();
+    fetchMovies();
   }, []);
 
   // const filteredFilms = films.filter((film) =>

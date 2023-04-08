@@ -34,7 +34,7 @@ export default function FilmsReact() {
     setSearchState({ filter, sortCol, desc });
   }
 
-  async function chargerFilms() {
+  async function fetchMovies() {
     const response = await fetch(
       'https://mcuapi.herokuapp.com/api/v1/movies?limit=50'
     );
@@ -43,7 +43,7 @@ export default function FilmsReact() {
   }
 
   useEffect(() => {
-    chargerFilms();
+    fetchMovies();
   }, []);
 
   filteredFilms = films.filter((film) =>

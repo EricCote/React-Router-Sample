@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './custom.scss';
 
 //import App from './my-routing/AppSpa';
-//import App from './my-routing/AppNaif';
+//import App from './my-routing/AppNaive';
 //import App from './my-routing/AppHash';
 //import App from './my-routing/AppHistory';
 //import App from './my-routing/AppNavigate';
