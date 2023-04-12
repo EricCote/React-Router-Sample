@@ -7,7 +7,14 @@ export interface ContactWithDetails extends Contact {
 }
 
 function Details() {
-  const contact: ContactWithDetails = useLoaderData() as ContactWithDetails;
+  const contact: ContactWithDetails =
+    (useLoaderData() as ContactWithDetails) ?? {
+      id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      formErrors: null,
+    };
   let submit = useSubmit();
   let action = useFormAction();
 

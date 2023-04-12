@@ -27,7 +27,11 @@ interface SearchParamsObject {
 }
 
 export default function FilmsServer() {
-  const { films, q, total } = useLoaderData() as IData; //Get data from the loader
+  const { films, q, total } = (useLoaderData() as IData) ?? {
+    films: [],
+    q: '',
+    total: 0,
+  }; //Get data from the loader, put default values if no data
   let { page = '1' } = useParams(); //get the page from the url
 
   const navigate = useNavigate(); //to help us navigate back or forward

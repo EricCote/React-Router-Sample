@@ -21,7 +21,7 @@ interface SearchParamsObject {
 }
 
 export default function FilmsRoutingUrl() {
-  const films = (useLoaderData() as IData).data ?? [];
+  const films = (useLoaderData() as IData)?.data ?? [];
   let [searchParams, setSearchParams] = useSearchParams();
   //searchParams: https://url?q=str&sortCol=column&desc=bool
   const params: SearchParamsObject = Object.fromEntries(searchParams);

@@ -29,11 +29,11 @@ export default function FilmsDefer() {
         }
       >
         <Await
-          resolve={results.films}
+          resolve={results?.films}
           errorElement={<p>Error loading Movies!</p>}
         >
           {(filmWrapper) => {
-            const films = filmWrapper.data;
+            const films = filmWrapper?.data ?? [];
             return (
               <>
                 <FilmTable films={films} />

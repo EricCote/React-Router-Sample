@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { Contact } from './ContactsApi';
 
 export default function Contacts() {
-  const contacts: Contact[] = useLoaderData() as Contact[];
+  const contacts: Contact[] = (useLoaderData() as Contact[]) ?? [];
 
   return (
     <>

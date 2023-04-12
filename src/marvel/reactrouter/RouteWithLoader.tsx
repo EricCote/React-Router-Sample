@@ -10,7 +10,7 @@ interface IData {
 }
 
 export default function FilmsRouter() {
-  const films: Film[] = (useLoaderData() as IData).data ?? [];
+  const films: Film[] = (useLoaderData() as IData)?.data ?? [];
   const [{ filter, sortCol, desc }, setSearchState] = useState<SearchStateType>(
     {
       filter: '',

@@ -18,7 +18,7 @@ interface Character {
 }
 
 export default function Thrones() {
-  const characters = useLoaderData() as Character[];
+  const characters = (useLoaderData() as Character[]) ?? [];
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   function onClickPersonage(id: number) {

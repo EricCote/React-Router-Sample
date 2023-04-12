@@ -9,6 +9,7 @@ import FilmsRouter, {
 import FilmsServer, { loaderWithServerSort } from '../marvel/serverside';
 import Thrones, { loaderSimpleThrones } from '../thrones';
 import Root from './Root';
+// import Root from './Animated-Root';
 import ErrorBoundary from './ErrorBoundary';
 import ContactApi, { actionContact } from '../contacts/ContactsApi';
 import Contacts from '../contacts';

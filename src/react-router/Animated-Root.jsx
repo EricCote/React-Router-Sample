@@ -2,15 +2,14 @@
 // see https://github.com/remix-run/react-router/issues/8936
 
 import React, { Suspense, useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import { useLocation, useOutlet, useNavigation } from 'react-router-dom';
 import { useTransition, animated, useSpringRef } from '@react-spring/web';
 
-import './custom.scss';
-import Menu from './Menu';
-import Footer from './Footer';
+import Menu from './MenuRouter';
 
 export default function Root() {
+  const navigation = useNavigation();
   return (
     <div
       style={{
@@ -22,9 +21,11 @@ export default function Root() {
     >
       <Menu />
       <Container className='position-relative mb-5'>
+        {navigation.state === 'loading' && (
+          <Spinner animation='border' variant='primary' />
+        )}
         <Content />
       </Container>
-      <Footer className='fixed-bottom' />
     </div>
   );
 }
