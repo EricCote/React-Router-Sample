@@ -8,27 +8,27 @@ import {
   LoaderFunctionArgs,
   URLSearchParamsInit,
 } from 'react-router-dom';
-import FilmCards from '../common/FilmCards';
-import { Film } from '../common/FilmInterface';
-import FilmTable from '../common/FilmTable';
+import MovieCards from '../common/MovieCards';
+import { Movie } from '../common/MovieInterface';
+import MovieTable from '../common/MovieTable';
 import FilterBox from '../common/FilterBox';
 
 interface IData {
-  films: Film[];
+  movies: Movie[];
   q: string;
   total: number;
 }
 
 interface SearchParamsObject {
   filter?: string;
-  sortCol?: keyof Film | null;
+  sortCol?: keyof Movie | null;
   desc?: string;
   q?: string;
 }
 
-export default function FilmsServer() {
-  const { films, q, total } = (useLoaderData() as IData) ?? {
-    films: [],
+export default function MoviesServer() {
+  const { movies, q, total } = (useLoaderData() as IData) ?? {
+    movies: [],
     q: '',
     total: 0,
   }; //Get data from the loader, put default values if no data
@@ -42,7 +42,7 @@ export default function FilmsServer() {
   const params: SearchParamsObject = Object.fromEntries(searchParams);
   //{q: str, sortCol: column, desc: bool}
 
-  function handleSort(column: keyof Film) {
+  function handleSort(column: keyof Movie) {
     //create a newsort object
     const newSort: SearchParamsObject = {
       sortCol: column, //column name to sort
@@ -79,8 +79,8 @@ export default function FilmsServer() {
 
       <Paging nbPages={nbPages} page={page} searchParams={searchParams} />
 
-      <FilmTable
-        films={films}
+      <MovieTable
+        movies={movies}
         sortedBy={{
           sortCol: params.sortCol ?? null,
           desc: params.desc === 'true',
@@ -88,7 +88,7 @@ export default function FilmsServer() {
         onSort={handleSort}
       />
 
-      <FilmCards films={films} />
+      <MovieCards movies={movies} />
     </>
   );
 }
@@ -146,12 +146,12 @@ export async function loaderWithServerSort({
     `https://mcuapi.herokuapp.com/api/v1/movies?${fetchParams}`
   );
   const data = await res.json();
-  const films = data.data;
+  const movies = data.data;
   const total = data.total;
 
-  return { films, q, total };
+  return { movies, q, total };
   //we return an object of 3 properties:
-  //films (array)
+  //movies (array)
   //q (string)
   //total (number)
 }

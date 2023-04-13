@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export default function Menu() {

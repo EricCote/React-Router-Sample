@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import FilmCards from '../common/FilmCards';
-import { Film } from '../common/FilmInterface';
-import FilmTable from '../common/FilmTable';
+import MovieCards from '../common/MovieCards';
+import { Movie } from '../common/MovieInterface';
+import MovieTable from '../common/MovieTable';
 // import FilterBox from '../common/FilterBox';
 
-export default function FilmsSimple() {
-  const [films, setFilms] = useState<Film[]>([]);
+export default function MoviesSimple() {
+  const [movies, setMovies] = useState<Movie[]>([]);
   // const [filter, setFilter] = useState<string>('');
 
   async function fetchMovies() {
@@ -13,15 +13,15 @@ export default function FilmsSimple() {
       'https://mcuapi.herokuapp.com/api/v1/movies?limit=50'
     );
     const data = await response.json();
-    setFilms(data.data);
+    setMovies(data.data);
   }
 
   useEffect(() => {
     fetchMovies();
   }, []);
 
-  // const filteredFilms = films.filter((film) =>
-  //   film.title.toLowerCase().includes(filter.toLowerCase())
+  // const filteredMovies = movies.filter((movie) =>
+  //   movie.title.toLowerCase().includes(filter.toLowerCase())
   // );
 
   return (
@@ -35,8 +35,8 @@ export default function FilmsSimple() {
         }}
       /> */}
 
-      <FilmTable films={films} />
-      <FilmCards films={films} />
+      <MovieTable movies={movies} />
+      <MovieCards movies={movies} />
     </>
   );
 }

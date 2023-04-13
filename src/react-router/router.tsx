@@ -1,23 +1,23 @@
+import Root from './Root';
+// import Root from './Animated-Root';
 import { createBrowserRouter, defer, redirect } from 'react-router-dom';
-import Compteur from '../compteur/Compteur';
+import Compteur from '../counter/Counter';
 import Page1 from '../page1';
 import Page2 from '../page2';
-import FilmsRouter, {
+import MoviesRouter, {
   loaderSimple,
   loaderWithErrorHandling,
 } from '../marvel/reactrouter/RouteWithLoader';
-import FilmsServer, { loaderWithServerSort } from '../marvel/serverside';
+import MoviesServer, { loaderWithServerSort } from '../marvel/serverside';
 import Thrones, { loaderSimpleThrones } from '../thrones';
-import Root from './Root';
-// import Root from './Animated-Root';
 import ErrorBoundary from './ErrorBoundary';
 import ContactApi, { actionContact } from '../contacts/ContactsApi';
 import Contacts from '../contacts';
 import Details, { ContactWithDetails } from '../contacts/Details';
-import FilmsReact from '../marvel/reactstate/FilterSort';
-import FilmsDefer, { loaderDefer } from '../marvel/reactrouter/RouteWithDefer';
-import FilmsSimple from '../marvel/reactstate/Simple1';
-import FilmsRoutingUrl from '../marvel/reactrouter/indexWithRoutingUrl';
+import MoviesReact from '../marvel/reactstate/FilterSort';
+import MoviesDefer, { loaderDefer } from '../marvel/reactrouter/RouteWithDefer';
+import MoviesSimple from '../marvel/reactstate/Simple1';
+import MoviesRoutingUrl from '../marvel/reactrouter/indexWithRoutingUrl';
 
 const router = createBrowserRouter([
   {
@@ -39,35 +39,35 @@ const router = createBrowserRouter([
         element: <Page2 />,
       },
       {
-        path: '/compteur',
+        path: '/counter',
         element: <Compteur />,
       },
       {
         path: '/marvel/simplereact',
-        element: <FilmsSimple />,
+        element: <MoviesSimple />,
       },
       {
         path: '/marvel/classic',
-        element: <FilmsReact />,
+        element: <MoviesReact />,
       },
       {
         path: '/marvel/router',
-        element: <FilmsRouter />,
+        element: <MoviesRouter />,
         loader: loaderSimple,
       },
       {
         path: '/marvel/url',
-        element: <FilmsRoutingUrl />,
+        element: <MoviesRoutingUrl />,
         loader: loaderWithErrorHandling,
       },
       {
         path: '/marvel/defer',
-        element: <FilmsDefer />,
+        element: <MoviesDefer />,
         loader: loaderDefer,
       },
       {
         path: '/marvel/server/:page?',
-        element: <FilmsServer />,
+        element: <MoviesServer />,
         loader: loaderWithServerSort,
       },
 

@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
-import FilmCards from '../common/FilmCards';
-import { Film } from '../common/FilmInterface';
-import FilmTable from '../common/FilmTable';
+import MovieCards from '../common/MovieCards';
+import { Movie } from '../common/MovieInterface';
+import MovieTable from '../common/MovieTable';
 
-export default function FilmsSimple() {
-  const [films, setFilms] = useState<Film[]>([]);
+export default function MoviesSimple() {
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   async function fetchMovies() {
     const response = await fetch(
       'https://mcuapi.herokuapp.com/api/v1/movies?limit=50'
     );
     const data = await response.json();
-    setFilms(data.data);
+    setMovies(data.data);
   }
 
   useEffect(() => {
@@ -22,8 +22,8 @@ export default function FilmsSimple() {
     <>
       <h1>Marvel Movies React simple</h1>
 
-      <FilmTable films={films} />
-      <FilmCards films={films} />
+      <MovieTable movies={movies} />
+      <MovieCards movies={movies} />
     </>
   );
 }

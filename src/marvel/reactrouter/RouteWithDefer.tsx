@@ -6,20 +6,20 @@ import {
   defer,
   LoaderFunctionArgs,
 } from 'react-router-dom';
-import FilmCards from '../common/FilmCards';
-import { Film } from '../common/FilmInterface';
-import FilmTable from '../common/FilmTable';
+import MovieCards from '../common/MovieCards';
+import { Movie } from '../common/MovieInterface';
+import MovieTable from '../common/MovieTable';
 
-interface FilmResults {
-  films: Film[];
+interface MovieResults {
+  movies: Movie[];
 }
 
-export default function FilmsDefer() {
-  const results: FilmResults = useLoaderData() as FilmResults;
+export default function MoviesDefer() {
+  const results: MovieResults = useLoaderData() as MovieResults;
 
   return (
     <>
-      <h1>Films Marvel avec Loader, Suspense, Await et Differ </h1>
+      <h1>Marvel movies with Loader, Suspense, Await and Differ </h1>
 
       <Suspense
         fallback={
@@ -29,16 +29,16 @@ export default function FilmsDefer() {
         }
       >
         <Await
-          resolve={results?.films}
+          resolve={results?.movies}
           errorElement={<p>Error loading Movies!</p>}
         >
-          {(filmWrapper) => {
-            const films = filmWrapper?.data ?? [];
+          {(movieWrapper) => {
+            const movies = movieWrapper?.data ?? [];
             return (
               <>
-                <FilmTable films={films} />
+                <MovieTable movies={movies} />
 
-                <FilmCards films={films} />
+                <MovieCards movies={movies} />
               </>
             );
           }}
@@ -68,5 +68,5 @@ export async function loaderDefer({ request }: LoaderFunctionArgs) {
       statusText: res.statusText,
     });
   }
-  return defer({ films: res.json() });
+  return defer({ movies: res.json() });
 }

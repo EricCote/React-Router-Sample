@@ -28,7 +28,16 @@ export default function Contacts() {
                 >
                   📄
                 </Link>
-                <Button variant='danger'>✏</Button>
+                <Button
+                  variant='danger'
+                  onClick={() => {
+                    alert(
+                      'This edit button needs to be programmed for an in place edit!'
+                    );
+                  }}
+                >
+                  ✏
+                </Button>
               </td>
             </tr>
           ))}

@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    //change existing links to hashes
+    //change the existing links to hashes
     changeAllLinksToHashes();
   }, [currentPage]);
 

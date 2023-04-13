@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
-import FilmCards from '../common/FilmCards';
-import { Film, SearchStateType } from '../common/FilmInterface';
-import FilmTable from '../common/FilmTable';
+import MovieCards from '../common/MovieCards';
+import { Movie, SearchStateType } from '../common/MovieInterface';
+import MovieTable from '../common/MovieTable';
 import FilterBox from '../common/FilterBox';
 
 interface IData {
-  data: Film[];
+  data: Movie[];
 }
 
-export default function FilmsRouter() {
-  const films: Film[] = (useLoaderData() as IData)?.data ?? [];
+export default function MoviesRouter() {
+  const movies: Movie[] = (useLoaderData() as IData)?.data ?? [];
   const [{ filter, sortCol, desc }, setSearchState] = useState<SearchStateType>(
     {
       filter: '',
@@ -19,9 +19,9 @@ export default function FilmsRouter() {
     }
   );
 
-  let filteredFilms: Film[];
+  let filteredMovies: Movie[];
 
-  function handleSort(column: keyof Film) {
+  function handleSort(column: keyof Movie) {
     const newSort: SearchStateType = {
       filter: filter,
       sortCol: column,
@@ -38,15 +38,15 @@ export default function FilmsRouter() {
     setSearchState({ filter, sortCol, desc });
   }
 
-  filteredFilms = films?.filter((film) =>
-    film.title.toLowerCase().includes(filter.toLowerCase())
+  filteredMovies = movies?.filter((movie) =>
+    movie.title.toLowerCase().includes(filter.toLowerCase())
   );
 
   if (sortCol) {
-    filteredFilms.sort((a, b) => {
+    filteredMovies.sort((a, b) => {
       return (a[sortCol] as string).localeCompare(b[sortCol] as string);
     });
-    if (desc) filteredFilms.reverse();
+    if (desc) filteredMovies.reverse();
   }
 
   return (
@@ -60,12 +60,12 @@ export default function FilmsRouter() {
         }}
       />
 
-      <FilmTable
-        films={filteredFilms}
+      <MovieTable
+        movies={filteredMovies}
         sortedBy={{ sortCol, desc }}
         onSort={handleSort}
       />
-      <FilmCards films={filteredFilms} />
+      <MovieCards movies={filteredMovies} />
     </>
   );
 }

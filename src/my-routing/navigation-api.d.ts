@@ -1,3 +1,4 @@
+// Navigation Api, Typescript Signature file...
 // Improved version of https://github.com/WICG/navigation-api/blob/main/navigation_api.d.ts
 
 interface NavigationEventMap {

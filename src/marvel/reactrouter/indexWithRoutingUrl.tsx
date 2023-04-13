@@ -1,36 +1,35 @@
-import { useState } from 'react';
 import {
   URLSearchParamsInit,
   useLoaderData,
   useSearchParams,
 } from 'react-router-dom';
-import FilmCards from '../common/FilmCards';
-import { Film } from '../common/FilmInterface';
-import FilmTable from '../common/FilmTable';
+import MovieCards from '../common/MovieCards';
+import { Movie } from '../common/MovieInterface';
+import MovieTable from '../common/MovieTable';
 import FilterBox from '../common/FilterBox';
 
 interface IData {
-  data: Film[];
+  data: Movie[];
 }
 
 interface SearchParamsObject {
   filter?: string;
-  sortCol?: keyof Film | null;
+  sortCol?: keyof Movie | null;
   desc?: string;
   q?: string;
 }
 
-export default function FilmsRoutingUrl() {
-  const films = (useLoaderData() as IData)?.data ?? [];
+export default function MoviesRoutingUrl() {
+  const movies = (useLoaderData() as IData)?.data ?? [];
   let [searchParams, setSearchParams] = useSearchParams();
   //searchParams: https://url?q=str&sortCol=column&desc=bool
   const params: SearchParamsObject = Object.fromEntries(searchParams);
   //params= {q: str, sortCol: column, desc: "bool"}
   const { q = '', sortCol, desc } = params;
 
-  let filteredFilms;
+  let filteredMovies;
 
-  function handleSort(column: keyof Film) {
+  function handleSort(column: keyof Movie) {
     const newSort: SearchParamsObject = {
       sortCol: column,
       desc: 'false',
@@ -48,15 +47,15 @@ export default function FilmsRoutingUrl() {
     setSearchParams(mergedSearch as URLSearchParamsInit); //set new search params
   }
 
-  filteredFilms = films?.filter((film) =>
-    film.title.toLowerCase().includes(q.toLowerCase())
+  filteredMovies = movies?.filter((movie) =>
+    movie.title.toLowerCase().includes(q.toLowerCase())
   );
 
   if (sortCol) {
-    filteredFilms.sort((a, b) => {
+    filteredMovies.sort((a, b) => {
       return (a[sortCol] as string).localeCompare(b[sortCol] as string); //on trie d'après la colonne
     });
-    if (desc) filteredFilms.reverse(); // on gère le tri descendant.
+    if (desc) filteredMovies.reverse(); // on gère le tri descendant.
   }
 
   return (
@@ -70,12 +69,12 @@ export default function FilmsRoutingUrl() {
         }}
       />
 
-      <FilmTable
-        films={filteredFilms}
+      <MovieTable
+        movies={filteredMovies}
         sortedBy={{ sortCol: sortCol ?? null, desc: desc === 'true' }}
         onSort={handleSort}
       />
-      <FilmCards films={filteredFilms} />
+      <MovieCards movies={filteredMovies} />
     </>
   );
 }

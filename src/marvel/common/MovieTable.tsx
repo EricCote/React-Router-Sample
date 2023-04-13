@@ -1,13 +1,13 @@
 import { Button, Table } from 'react-bootstrap';
-import { Film, SortedByType } from './FilmInterface';
+import { Movie, SortedByType } from './MovieInterface';
 
-interface FilmTableProps {
-  films: Film[];
+interface MovieTableProps {
+  movies: Movie[];
   sortedBy?: SortedByType;
-  onSort?: (columnName: keyof Film) => void;
+  onSort?: (columnName: keyof Movie) => void;
 }
 
-function FilmTable({ films, sortedBy, onSort }: FilmTableProps) {
+function MovieTable({ movies, sortedBy, onSort }: MovieTableProps) {
   return (
     <Table striped bordered hover>
       <thead>
@@ -27,12 +27,12 @@ function FilmTable({ films, sortedBy, onSort }: FilmTableProps) {
         </tr>
       </thead>
       <tbody>
-        {films.map((film) => (
-          <tr key={film.id}>
+        {movies.map((movie) => (
+          <tr key={movie.id}>
             <td>
-              <a href={`#${film.title}`}>{film.title}</a>{' '}
+              <a href={`#${movie.title}`}>{movie.title}</a>{' '}
             </td>
-            <td>{film.release_date}</td>
+            <td>{movie.release_date}</td>
           </tr>
         ))}
       </tbody>
@@ -40,13 +40,13 @@ function FilmTable({ films, sortedBy, onSort }: FilmTableProps) {
   );
 }
 
-export default FilmTable;
+export default MovieTable;
 
 interface HeaderProps {
-  columnName: keyof Film;
+  columnName: keyof Movie;
   display: string;
   sortedBy?: SortedByType;
-  onSort?: (columnName: keyof Film) => void;
+  onSort?: (columnName: keyof Movie) => void;
 }
 
 function Header({ columnName, display, sortedBy, onSort }: HeaderProps) {

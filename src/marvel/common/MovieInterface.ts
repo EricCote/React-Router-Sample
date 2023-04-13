@@ -1,4 +1,4 @@
-export interface Film {
+export interface Movie {
   id: number;
   title: string;
   release_date: string;
@@ -16,12 +16,12 @@ export interface Film {
 }
 
 export interface SortedByType {
-  sortCol: keyof Film | null;
+  sortCol: keyof Movie | null;
   desc: boolean;
 }
 
 export interface SearchStateType {
   filter: string;
-  sortCol: keyof Film | null;
+  sortCol: keyof Movie | null;
   desc: boolean;
 }

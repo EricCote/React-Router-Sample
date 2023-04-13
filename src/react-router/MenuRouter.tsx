@@ -25,8 +25,8 @@ export default function Menu() {
               <Nav.Link as={NavLink} to='/page2'>
                 Page 2
               </Nav.Link>
-              <Nav.Link as={NavLink} to='/compteur'>
-                Compteur
+              <Nav.Link as={NavLink} to='/counter'>
+                Counter
               </Nav.Link>
               <NavDropdown
                 title='Marvel'
@@ -34,22 +34,22 @@ export default function Menu() {
                 id='nav-dropdown'
               >
                 <NavDropdown.Item as={NavLink} to='/marvel/simpleReact'>
-                  Approche React Simple
+                  MCU React Simple
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/marvel/classic'>
-                  Approche React
+                  MCU React
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/marvel/router'>
-                  Approche Routage
+                  MCU Router
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/marvel/defer'>
-                  Approche Routage avec defer
+                  MCU routing with defer
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/marvel/url'>
-                  Approche Routage avec url search
+                  MCU Routing with url search
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/marvel/server'>
-                  Approche Serveur
+                  MCU Server
                 </NavDropdown.Item>
               </NavDropdown>
 

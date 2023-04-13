@@ -1,15 +1,14 @@
-import React from 'react';
 import { Form } from 'react-bootstrap';
 
-interface BoiteProps {
-  nombre: number | null;
+interface BoxProps {
+  num: number | null;
   onChange: (str: string) => void;
 }
 
-export default function Boite({ nombre, onChange }: BoiteProps) {
+export default function Box({ num, onChange }: BoxProps) {
   return (
     <Form.Control
-      value={nombre ?? ''}
+      value={num ?? ''}
       type='number'
       onChange={(evt) => {
         onChange(evt.target.value);
