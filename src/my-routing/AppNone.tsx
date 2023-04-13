@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import Page1 from '../page1';
+import Menu from './Menu';
 
 /* ------------------------
 The way a web server is configured in SPA mode:
@@ -10,9 +11,12 @@ The way a web server is configured in SPA mode:
 ---------------------------- */
 function App() {
   return (
-    <Container className='mt-5'>
-      <Page1 />
-    </Container>
+    <>
+      <Menu />
+      <Container>
+        <Page1 />
+      </Container>
+    </>
   );
 }
 

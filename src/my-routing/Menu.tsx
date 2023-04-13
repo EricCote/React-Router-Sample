@@ -10,6 +10,8 @@ export default function Menu() {
           <Nav className='me-auto'>
             <Nav.Link href='/page1'>Page 1</Nav.Link>
             <Nav.Link href='/page2'>Page 2</Nav.Link>
+            <Nav.Link href='/page3'>Page 3</Nav.Link>
+            <Nav.Link href='/counter'>Counter</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
