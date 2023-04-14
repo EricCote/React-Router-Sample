@@ -11,7 +11,7 @@ export default function Route({ page }: RouteProps) {
   //then replace "#" with "/"
   //NOTE: this workaround is only for AppHash!!
   if (page[0] === '#') {
-    page = page.replace(/^\#/, '/');
+    page = page.replace(/^#/, '/');
   }
   // Routes are managed here.
   // Note that page3 will do a 404.

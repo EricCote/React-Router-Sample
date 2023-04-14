@@ -139,7 +139,7 @@ export async function loaderWithServerSort({
   let fetchParams = `limit=10&page=${page}`; //build the fetch params
   if (order)
     fetchParams = `${fetchParams}&order=${order},${
-      desc == 'true' ? 'DESC' : 'ASC'
+      desc === 'true' ? 'DESC' : 'ASC'
     }`;
   if (q) fetchParams = `${fetchParams}&filter=title%3D${q}`;
   const res = await fetch(

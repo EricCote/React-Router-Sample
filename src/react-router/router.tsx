@@ -1,9 +1,10 @@
 import Root from './Root';
 // import Root from './Animated-Root';
-import { createBrowserRouter, defer, redirect } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import Compteur from '../counter/Counter';
 import Page1 from '../page1';
 import Page2 from '../page2';
+
 import MoviesRouter, {
   loaderSimple,
   loaderWithErrorHandling,
