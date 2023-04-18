@@ -1,10 +1,10 @@
 import { LoaderFunctionArgs, redirect } from 'react-router-dom';
 
 export interface Contact {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  id?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
 }
 
 const base = 'https://contacts.reactacademy.live/api';
@@ -24,13 +24,13 @@ export default class ContactApi {
     // Simulate server-side validation
 
     const minContactLength = 3;
-    if (contact.firstName.length < minContactLength) {
+    if (contact?.firstName?.length ?? 0 < minContactLength) {
       throw new Error(
         `First Name must be at least ${minContactLength} characters.`
       );
     }
 
-    if (contact.lastName.length < minContactLength) {
+    if (contact?.lastName?.length ?? 0 < minContactLength) {
       throw new Error(
         `Last Name must be at least ${minContactLength} characters.`
       );

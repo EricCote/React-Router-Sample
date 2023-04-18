@@ -53,12 +53,15 @@ export default function MoviesServer() {
       //convert string to boolean
       newSort.desc = (!(params.desc === 'true')).toString();
     }
-    updateSearch(newSort as SearchParamsObject);
+    updateSearch(newSort);
   }
 
   function updateSearch(newSearch: SearchParamsObject) {
-    const mergedSearch: SearchParamsObject = { ...params, ...newSearch }; //merge old and new params
-    setSearchParams(mergedSearch as URLSearchParamsInit); //set new search param
+    const mergedSearch: URLSearchParamsInit = {
+      ...params,
+      ...newSearch,
+    } as URLSearchParamsInit; //merge old and new params
+    setSearchParams(mergedSearch); //set new search param
     if (newSearch.q !== params.q && Number.parseInt(page) > 1) {
       // if we're launching a search from page greater than 1
       const s = new URLSearchParams(mergedSearch as URLSearchParams);

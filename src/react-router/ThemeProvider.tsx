@@ -28,7 +28,6 @@ interface LocalThemeProps {
   theme: string;
   as?: ElementType<any>;
   children: ReactNode;
-  otherProps?: [];
 }
 
 const IS_SERVER: boolean = typeof window === 'undefined';
