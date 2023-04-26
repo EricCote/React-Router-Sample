@@ -1,3 +1,6 @@
+// Data Structure from:
+// 'https://mcuapi.herokuapp.com/api/v1/movies?limit=50';
+
 export interface Movie {
   id: number;
   title: string;
@@ -20,8 +23,6 @@ export interface SortedByType {
   desc: boolean;
 }
 
-export interface SearchStateType {
+export interface SearchStateType extends SortedByType {
   filter: string;
-  sortCol: keyof Movie | null;
-  desc: boolean;
 }

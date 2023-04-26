@@ -25,6 +25,9 @@ export default function Menu() {
               <Nav.Link as={NavLink} to='/page2'>
                 Page 2
               </Nav.Link>
+              <Nav.Link as={NavLink} to='/page3'>
+                Page 3
+              </Nav.Link>
               <Nav.Link as={NavLink} to='/counter'>
                 Counter
               </Nav.Link>

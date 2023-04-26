@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Compteur from '../counter/Counter';
 import Page1 from '../page1';
 import Page2 from '../page2';
+import Page3 from '../page3';
 
 import MoviesRouter, {
   loaderSimple,
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/page2',
         element: <Page2 />,
+      },
+      {
+        path: '/page3',
+        element: <Page3 />,
       },
       {
         path: '/counter',
