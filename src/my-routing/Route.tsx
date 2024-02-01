@@ -25,6 +25,6 @@ export default function Route({ page }: RouteProps) {
     case '/counter':
       return <Counter />;
     default:
-      return <>404 error</>;
+      return <div>404 error</div>;
   }
 }

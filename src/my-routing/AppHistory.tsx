@@ -22,16 +22,14 @@ function App() {
       ':link'
     ) as NodeListOf<HTMLLinkElement>) {
       //bind a click event handler
-      link.addEventListener('click', (evt) => {
-        clickHandler(evt, link);
-      });
+      link.addEventListener('click', clickHandler);
     }
   }
 
   //click handler that uses the history API instead of navigating
-  function clickHandler(evt: Event, link: HTMLLinkElement) {
+  function clickHandler(evt: Event) {
     //create a url object from the link text
-    const url = new URL(link.href);
+    const url = new URL((evt!.target as HTMLAnchorElement).href);
     if (
       //if hostname is the same, but with a different path,
       //then handle the navigation
@@ -42,6 +40,11 @@ function App() {
       //Add destination in history API
       window.history.pushState(url.pathname, '', url.pathname);
       setCurrentPage(url.pathname); //set State to re-render the app.
+    } else if (
+      url.hostname === window.location.hostname &&
+      url.pathname === window.location.pathname
+    ) {
+      evt.preventDefault(); //cancel if we navigate to the same page twice
     }
   }
 
