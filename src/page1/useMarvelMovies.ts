@@ -2,34 +2,33 @@ import { useEffect, useState } from 'react';
 import { Movie } from '../marvel/common/MovieInterface';
 
 /*
-intégré au navigateur
+Browser API
 1. XmlHttpRequest (xhr Ajax)
 2. Fetch API (promise based)
 
-Librairies externes:
+External libraries
 1. jQuery (ajax)
 2. Axios  (promise based)
-3. React query
-
+3. TanStack Query
 */
 
 export default function useMarvelMovies(): [
-  films: Movie[],
+  movies: Movie[],
   refreshMovies: () => Promise<void>
 ] {
-  const [films, setFilms] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
-    refreshFilms();
+    refreshMovies();
   }, []);
 
-  async function refreshFilms() {
+  async function refreshMovies() {
     const res = await fetch(
       'https://mcuapi.herokuapp.com/api/v1/movies?limit=50'
     );
     const data = await res.json();
-    setFilms(data.data);
+    setMovies(data.data);
   }
 
-  return [films, refreshFilms];
+  return [movies, refreshMovies];
 }
